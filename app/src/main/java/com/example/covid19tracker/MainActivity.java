@@ -24,17 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tv = findViewById(R.id.tvtest);
-
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.newBuilder().addInterceptor(loggingInterceptor).build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.covid19api.com/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
                 .build();
 
         RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
@@ -53,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
                     String content = "";
                     content += "Country Name: " + countriesItem.getCountry() + "\n";
                     content += "New Cases: " + countriesItem.getNewConfirmed() + "\n";
-                    content += "Total Confirmed: " + countriesItem.getTotalConfirmed() + "\n";
+                    content += "Total Cases: " + countriesItem.getTotalConfirmed() + "\n";
                     content += "New Deaths: " + countriesItem.getNewDeaths() + "\n";
                     content += "Total Deaths: " + countriesItem.getTotalDeaths() + "\n";
-                    content += "New Recovered: " + countriesItem.getNewRecovered() + "\n";
+                    content += "Recovered Today: " + countriesItem.getNewRecovered() + "\n";
                     content += "Total Recovered: " + countriesItem.getTotalRecovered() + "\n\n";
                     tv.append(content);
                 }
