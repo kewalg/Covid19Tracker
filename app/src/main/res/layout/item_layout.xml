@@ -9,8 +9,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#000">
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/country_name"
@@ -18,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Country"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="25sp" />
 
         <TextView
@@ -28,7 +27,7 @@
             android:layout_below="@id/country_name"
             android:padding="10dp"
             android:text="New Cases"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <TextView
@@ -38,7 +37,7 @@
             android:layout_below="@id/new_cases"
             android:padding="10dp"
             android:text="Total Cases"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <TextView
@@ -49,7 +48,7 @@
             android:layout_toRightOf="@id/country_name"
             android:padding="10dp"
             android:text="New Deaths"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <TextView
@@ -60,7 +59,7 @@
             android:layout_toRightOf="@id/country_name"
             android:padding="10dp"
             android:text="Total Deaths"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <TextView
@@ -71,7 +70,7 @@
             android:layout_toRightOf="@id/total_deaths"
             android:padding="10dp"
             android:text="New Recovered"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <TextView
@@ -82,7 +81,7 @@
             android:layout_toRightOf="@id/total_deaths"
             android:padding="10dp"
             android:text="Total Recovered"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:textSize="15sp" />
 
 

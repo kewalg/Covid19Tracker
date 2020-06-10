@@ -4,7 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         parseJSON();
@@ -50,10 +56,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "ERROR CODE: " + response.code(), Toast.LENGTH_LONG).show();
                     return;
                 }
-
                 countriesItems = new ArrayList<>(response.body().getCountries());
                 dataAdapter = new DataAdapter(countriesItems, MainActivity.this);
                 mRecyclerView.setAdapter(dataAdapter);
+
+                dataAdapter.setOnItemClickListener(new DataAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent = new Intent(MainActivity.this, CountrySpecificActivity.class);
+                        intent.putExtra("ExampleItem", countriesItems.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -61,5 +75,29 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Error" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                dataAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 }
