@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/country_name"
+            android:layout_centerHorizontal="true"
             android:padding="10dp"
             android:text="New Cases"
             android:textColor="#000"
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/new_cases"
+            android:layout_centerHorizontal="true"
             android:padding="10dp"
             android:text="Total Cases"
             android:textColor="#000"
@@ -44,45 +46,41 @@
             android:id="@+id/new_deaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/country_name"
-            android:layout_toRightOf="@id/country_name"
             android:padding="10dp"
             android:text="New Deaths"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/total_deaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/new_deaths"
-            android:layout_toRightOf="@id/country_name"
             android:padding="10dp"
             android:text="Total Deaths"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/new_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/country_name"
-            android:layout_toRightOf="@id/total_deaths"
             android:padding="10dp"
             android:text="New Recovered"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/total_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/new_recovered"
-            android:layout_toRightOf="@id/total_deaths"
             android:padding="10dp"
             android:text="Total Recovered"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>

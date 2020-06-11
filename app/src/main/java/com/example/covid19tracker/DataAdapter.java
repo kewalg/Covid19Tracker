@@ -1,6 +1,7 @@
 package com.example.covid19tracker;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
             total_deaths = view.findViewById(R.id.total_deaths);
             new_recovered = view.findViewById(R.id.new_recovered);
             total_recovered = view.findViewById(R.id.total_recovered);
+            country_name.setPaintFlags(country_name.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,8 +89,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
 
         viewHolder.country_name.setText(country_name);
-        viewHolder.new_cases.setText(new_cases);
-        viewHolder.total_cases.setText(total_cases);
+        viewHolder.new_cases.setText("New Cases: " + new_cases);
+        viewHolder.total_cases.setText("Total Cases: " + total_cases);
         viewHolder.new_deaths.setText(new_deaths);
         viewHolder.total_deaths.setText(total_deaths);
         viewHolder.new_recovered.setText(new_recovered);
