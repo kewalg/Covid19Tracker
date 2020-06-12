@@ -11,8 +11,7 @@
         android:id="@+id/ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/news"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
 
@@ -21,9 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="50sp"
             android:text="Global Stats"
-            android:textSize="50sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/new_cases_global"
@@ -31,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Cases"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
 
@@ -40,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Total Cases"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
 
@@ -49,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Deaths"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
 
@@ -58,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Total Cases"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
 
@@ -67,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Recoveries"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/total_recovered_global"
@@ -75,16 +73,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Total Recoveries"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/news"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_news"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_above="@id/btn_countrywise"
+        android:layout_below="@id/ll"
         android:layout_marginTop="30dp"
-        android:text="PLACE HOLDER FOR NEWS" />
+        android:layout_marginBottom="0dp"
+        tools:listitem="@layout/item_layout_news" />
 
     <Button
         android:id="@+id/btn_countrywise"

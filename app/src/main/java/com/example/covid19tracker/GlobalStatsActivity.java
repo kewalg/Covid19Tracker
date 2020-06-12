@@ -1,6 +1,8 @@
 package com.example.covid19tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -23,6 +25,10 @@ public class GlobalStatsActivity extends AppCompatActivity {
             new_deaths_global, total_deaths_global,
             new_recoveries_global, total_recoveries_global;
     Button btn_countrywise;
+    private DataAdapterNews dataAdapterNews;
+    private ArrayList<Article> articles = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,8 @@ public class GlobalStatsActivity extends AppCompatActivity {
         total_deaths_global = findViewById(R.id.total_deaths_global);
         new_recoveries_global = findViewById(R.id.new_recovered_global);
         total_recoveries_global = findViewById(R.id.total_recovered_global);
+        //news = findViewById(R.id.news);
+
         btn_countrywise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +52,48 @@ public class GlobalStatsActivity extends AppCompatActivity {
             }
         });
         parseJSON();
+
+        mRecyclerView = findViewById(R.id.recycler_view_news);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        parseNewsJSON();
+    }
+
+    private void parseNewsJSON() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://newsapi.org/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RetrofitNewsInterface retrofitNewsInterface = retrofit.create(RetrofitNewsInterface.class);
+        Call<News> call = retrofitNewsInterface.getNews();
+        call.enqueue(new Callback<News>() {
+            @Override
+            public void onResponse(Call<News> call, retrofit2.Response<News> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(GlobalStatsActivity.this, "ERROR CODE: " + response.code(), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                articles = new ArrayList<>(response.body().getArticles());
+                dataAdapterNews = new DataAdapterNews(articles, GlobalStatsActivity.this);
+                mRecyclerView.setAdapter(dataAdapterNews);
+
+                dataAdapterNews.setOnItemClickListener(new DataAdapterNews.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent i = new Intent(GlobalStatsActivity.this, NewsSpecificActivity.class);
+                        i.putExtra("NewsItem", articles.get(position));
+                        startActivity(i);
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<News> call, Throwable t) {
+                Toast.makeText(GlobalStatsActivity.this, "Error" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
