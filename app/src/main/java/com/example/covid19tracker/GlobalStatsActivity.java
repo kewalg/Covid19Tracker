@@ -44,8 +44,6 @@ public class GlobalStatsActivity extends AppCompatActivity {
             }
         });
         parseJSON();
-
-
     }
 
 
