@@ -12,17 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CardViewActivity"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".CardViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".NewsSpecificActivity" />
-        <activity android:name=".GlobalStatsActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".CountrySpecificActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".NewsSpecificActivity"></activity>
+        <activity android:name=".GlobalStatsActivity"></activity>
+        <activity android:name=".CountrySpecificActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -23,9 +23,9 @@ public class NewsSpecificActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_specific);
-        iv_url = findViewById(R.id.iv_url_specific);
+        /*iv_url = findViewById(R.id.iv_url_specific);
         tv_headlines = findViewById(R.id.tv_headlines_specific);
-        tv_desc = findViewById(R.id.tv_desc_specific);
+        tv_desc = findViewById(R.id.tv_desc_specific);*/
         webView = findViewById(R.id.webview);
 
         Intent i = getIntent();
@@ -44,19 +44,18 @@ public class NewsSpecificActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
 
 
-        Glide.with(this)
+        /*Glide.with(this)
                 .load(image_url)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .override(800, 800)
-                .into(iv_url);
-
+                .into(iv_url);*/
+/*
         tv_headlines.setText(title);
-        tv_desc.setText(desc);
+        tv_desc.setText(desc);*/
     }
 
     @Override

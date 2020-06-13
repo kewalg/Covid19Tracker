@@ -1,12 +1,10 @@
 package com.example.covid19tracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +21,9 @@ public class CardViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
         models = new ArrayList<>();
-        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Brochure", "TEST")));
-        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Brochure", "TEST")));
-        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Brochure", "TEST")));
-        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Brochure", "TEST")));
+        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Global Stats", "COVID-19 stats around the world!")));
+        models.add((new ModelForMain(R.drawable.ic_launcher_background, "Country Specific Stats", "COVID-19 stats specific to each country!")));
+        models.add((new ModelForMain(R.drawable.ic_launcher_background, "COVID-19 in News", "Coverage of latest news related to COVID-19")));
         adapterForMain = new AdapterForMain(models, this);
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapterForMain);
@@ -34,8 +31,7 @@ public class CardViewActivity extends AppCompatActivity {
 
         Integer[] colors_temp = {getColor(R.color.color1),
                 getColor(R.color.color2),
-                getColor(R.color.color3),
-                getColor(R.color.color4)};
+                getColor(R.color.color3)};
 
         colors = colors_temp;
 

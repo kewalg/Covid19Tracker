@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import java.util.List;
 
 public class AdapterForMain extends PagerAdapter {
@@ -65,10 +63,8 @@ public class AdapterForMain extends PagerAdapter {
                     context.startActivity(myIntent);
                 }
                 if (position == 2) {
-                    Toast.makeText(context, "TEST", Toast.LENGTH_SHORT).show();
-                }
-                if (position == 3) {
-                    Toast.makeText(context, "TEST", Toast.LENGTH_SHORT).show();
+                    Intent myIntent = new Intent(context, NewsActivity.class);
+                    context.startActivity(myIntent);
                 }
             }
         });

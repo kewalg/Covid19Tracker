@@ -24,78 +24,21 @@ public class GlobalStatsActivity extends AppCompatActivity {
     TextView new_cases_global, total_cases_global,
             new_deaths_global, total_deaths_global,
             new_recoveries_global, total_recoveries_global;
-    Button btn_countrywise;
-    private DataAdapterNews dataAdapterNews;
-    private ArrayList<Article> articles = new ArrayList<>();
-    private RecyclerView mRecyclerView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_stats);
-
-        btn_countrywise = findViewById(R.id.btn_countrywise);
         new_cases_global = findViewById(R.id.new_cases_global);
         total_cases_global = findViewById(R.id.total_cases_global);
         new_deaths_global = findViewById(R.id.new_deaths_global);
         total_deaths_global = findViewById(R.id.total_deaths_global);
         new_recoveries_global = findViewById(R.id.new_recovered_global);
         total_recoveries_global = findViewById(R.id.total_recovered_global);
-        //news = findViewById(R.id.news);
-
-        btn_countrywise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(GlobalStatsActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
         parseJSON();
 
-        mRecyclerView = findViewById(R.id.recycler_view_news);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        parseNewsJSON();
     }
-
-    private void parseNewsJSON() {
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://newsapi.org/v2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RetrofitNewsInterface retrofitNewsInterface = retrofit.create(RetrofitNewsInterface.class);
-        Call<News> call = retrofitNewsInterface.getNews();
-        call.enqueue(new Callback<News>() {
-            @Override
-            public void onResponse(Call<News> call, retrofit2.Response<News> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(GlobalStatsActivity.this, "ERROR CODE: " + response.code(), Toast.LENGTH_LONG).show();
-                    return;
-                }
-                articles = new ArrayList<>(response.body().getArticles());
-                dataAdapterNews = new DataAdapterNews(articles, GlobalStatsActivity.this);
-                mRecyclerView.setAdapter(dataAdapterNews);
-
-                dataAdapterNews.setOnItemClickListener(new DataAdapterNews.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int position) {
-                        Intent i = new Intent(GlobalStatsActivity.this, NewsSpecificActivity.class);
-                        i.putExtra("NewsItem", articles.get(position));
-                        startActivity(i);
-
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<News> call, Throwable t) {
-                Toast.makeText(GlobalStatsActivity.this, "Error" + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
 
     private void parseJSON() {
         Retrofit retrofit = new Retrofit.Builder()

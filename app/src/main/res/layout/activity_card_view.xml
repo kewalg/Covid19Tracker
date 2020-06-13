@@ -13,7 +13,7 @@
         android:layout_centerInParent="true"
         android:clipToPadding="false"
         android:foregroundGravity="center"
-        android:overScrollMode="never"></androidx.viewpager.widget.ViewPager>
+        android:overScrollMode="never" />
 
     <Button
         android:id="@+id/btnOrder"
@@ -25,7 +25,7 @@
         android:background="@drawable/round"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:text="Order Now!"
+        android:text="About Me!"
         android:textColor="#fff" />
 
 </RelativeLayout>

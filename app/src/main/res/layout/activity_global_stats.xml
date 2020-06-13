@@ -11,6 +11,7 @@
         android:id="@+id/ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
@@ -75,24 +76,5 @@
             android:text="Total Recoveries"
             android:textSize="15sp" />
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_news"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btn_countrywise"
-        android:layout_below="@id/ll"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="0dp"
-        tools:listitem="@layout/item_layout_news" />
-
-    <Button
-        android:id="@+id/btn_countrywise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:text="CountryWise Stats" />
 
 </RelativeLayout>
