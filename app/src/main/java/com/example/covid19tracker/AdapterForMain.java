@@ -1,7 +1,9 @@
 package com.example.covid19tracker;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
 import java.util.List;
 
 public class AdapterForMain extends PagerAdapter {
@@ -35,6 +38,7 @@ public class AdapterForMain extends PagerAdapter {
         return view.equals(object);
     }
 
+
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -51,6 +55,8 @@ public class AdapterForMain extends PagerAdapter {
         tv1.setText(models.get(position).getTitle());
         tv2.setText(models.get(position).getDesc());
         container.addView(view, 0);
+
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,18 +24,19 @@ public class NewsActivity extends AppCompatActivity {
     TextView new_cases_global, total_cases_global,
             new_deaths_global, total_deaths_global,
             new_recoveries_global, total_recoveries_global;
-    Button btn_countrywise;
     private DataAdapterNews dataAdapterNews;
     private ArrayList<Article> articles = new ArrayList<>();
     private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoActionBar);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-
-       // btn_countrywise = findViewById(R.id.btn_countrywise);
         new_cases_global = findViewById(R.id.new_cases_global);
         total_cases_global = findViewById(R.id.total_cases_global);
         new_deaths_global = findViewById(R.id.new_deaths_global);

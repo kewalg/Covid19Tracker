@@ -60,7 +60,7 @@ public class DataAdapterNews extends RecyclerView.Adapter<DataAdapterNews.ViewHo
         Glide.with(context)
                 .load(imageURL)
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .override(800, 800)
+                .override(400, 400)
                 .into(viewHolder.iv_url);
 
     }

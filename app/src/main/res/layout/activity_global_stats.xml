@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".GlobalStatsActivity">
 
 
@@ -13,7 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:background="@drawable/shape"
+        android:elevation="30dp"
+        android:orientation="vertical"
+        android:padding="50sp">
 
 
         <TextView
@@ -21,8 +25,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
             android:text="Global Stats"
+            android:textColor="@color/colorText"
             android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10sp"
+            android:text="Today"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/new_cases_global"
@@ -30,16 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Cases"
+            android:textColor="@color/colorText"
             android:textSize="15sp" />
 
-        <TextView
-
-            android:id="@+id/total_cases_global"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Total Cases"
-            android:textSize="15sp" />
 
         <TextView
 
@@ -48,15 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Deaths"
-            android:textSize="15sp" />
-
-        <TextView
-
-            android:id="@+id/total_deaths_global"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Total Cases"
+            android:textColor="@color/colorText"
             android:textSize="15sp" />
 
         <TextView
@@ -66,7 +68,41 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Recoveries"
+            android:textColor="@color/colorText"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_overall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp"
+            android:text="Overall"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+
+            android:id="@+id/total_cases_global"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Total Cases"
+            android:textColor="@color/colorText"
+            android:textSize="15sp" />
+
+        <TextView
+
+            android:id="@+id/total_deaths_global"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Total Deaths"
+            android:textColor="@color/colorText"
+            android:textSize="15sp" />
+
 
         <TextView
             android:id="@+id/total_recovered_global"
@@ -74,7 +110,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Total Recoveries"
+            android:textColor="@color/colorText"
             android:textSize="15sp" />
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20sp"
+        android:text="Last Updated On: "
+        android:textColor="@color/colorText1"
+        android:textSize="15sp" />
 </RelativeLayout>

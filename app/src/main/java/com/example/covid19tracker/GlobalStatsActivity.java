@@ -1,19 +1,19 @@
 package com.example.covid19tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.text.DecimalFormat;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,11 +23,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GlobalStatsActivity extends AppCompatActivity {
     TextView new_cases_global, total_cases_global,
             new_deaths_global, total_deaths_global,
-            new_recoveries_global, total_recoveries_global;
+            new_recoveries_global, total_recoveries_global, tv_today, tv_total, tv_date;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoActionBar);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_stats);
         new_cases_global = findViewById(R.id.new_cases_global);
@@ -36,6 +40,15 @@ public class GlobalStatsActivity extends AppCompatActivity {
         total_deaths_global = findViewById(R.id.total_deaths_global);
         new_recoveries_global = findViewById(R.id.new_recovered_global);
         total_recoveries_global = findViewById(R.id.total_recovered_global);
+        tv_today = findViewById(R.id.tv_today);
+        tv_today.setPaintFlags(tv_today.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_total = findViewById(R.id.tv_overall);
+        tv_total.setPaintFlags(tv_total.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_date = findViewById(R.id.tv_date);
+        tv_date.setPaintFlags(tv_total.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        String date_n = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(new Date());
+        tv_date.setText("Last Updated On: " + date_n);
+
         parseJSON();
 
     }
@@ -57,18 +70,37 @@ public class GlobalStatsActivity extends AppCompatActivity {
                     return;
                 }
                 assert response.body() != null;
+
                 int new_cases = response.body().getGlobal().getNewConfirmed();
-                new_cases_global.setText("New Cases Today: " + new_cases);
+
+                DecimalFormat decim = new DecimalFormat("#,###.##");
+                String test = "New Cases: " + decim.format(new_cases);
+                new_cases_global.setText(test);
+
                 int total_cases = response.body().getGlobal().getTotalConfirmed();
-                total_cases_global.setText("Total Cases: " + total_cases);
+                DecimalFormat decim1 = new DecimalFormat("#,###.##");
+                String test1 = "Total Cases: " + decim1.format(total_cases);
+                total_cases_global.setText(test1);
+
                 int new_deaths = response.body().getGlobal().getNewDeaths();
-                new_deaths_global.setText("New Deaths Today: " + new_deaths);
+                DecimalFormat decim2 = new DecimalFormat("#,###.##");
+                String test2 = "New Deaths: " + decim2.format(new_deaths);
+                new_deaths_global.setText(test2);
+
                 int total_deaths = response.body().getGlobal().getTotalDeaths();
-                total_deaths_global.setText("Total Deaths: " + total_deaths);
+                DecimalFormat decim3 = new DecimalFormat("#,###.##");
+                String test3 = "Total Deaths: " + decim3.format(total_deaths);
+                total_deaths_global.setText(test3);
+
                 int new_recoveries = response.body().getGlobal().getNewRecovered();
-                new_recoveries_global.setText("New Recoveries Today: " + new_recoveries);
+                DecimalFormat decim4 = new DecimalFormat("#,###.##");
+                String test4 = "New Recoveries: " + decim4.format(new_recoveries);
+                new_recoveries_global.setText(test4);
+
                 int total_recoveries = response.body().getGlobal().getTotalRecovered();
-                total_recoveries_global.setText("Total Recoveries: " + total_recoveries);
+                DecimalFormat decim5 = new DecimalFormat("#,###.##");
+                String test5 = "Total Recoveries: " + decim5.format(total_recoveries);
+                total_recoveries_global.setText(test5);
             }
 
             @Override
