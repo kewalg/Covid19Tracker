@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".NewsSpecificActivity"></activity>
         <activity android:name=".GlobalStatsActivity"></activity>
-        <activity android:name=".CountrySpecificActivity"></activity>
         <activity android:name=".MainActivity"></activity>
     </application>
 

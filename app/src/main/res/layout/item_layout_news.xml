@@ -5,10 +5,11 @@
     android:layout_margin="5dp">
 
     <RelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_rl"
-        android:elevation="20dp"
+        android:background="@color/colorBackground"
+        android:elevation="50dp"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -28,7 +29,8 @@
             android:paddingRight="10dp"
             android:text="title"
             android:textColor="@color/colorText1"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_publishedAt"
@@ -80,5 +82,8 @@
             android:textColor="@color/colorText1"
             android:textSize="10sp"
             android:visibility="invisible" />
+
     </RelativeLayout>
+
+
 </androidx.cardview.widget.CardView>

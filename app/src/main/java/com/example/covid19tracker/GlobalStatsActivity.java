@@ -72,7 +72,6 @@ public class GlobalStatsActivity extends AppCompatActivity {
                 assert response.body() != null;
 
                 int new_cases = response.body().getGlobal().getNewConfirmed();
-
                 DecimalFormat decim = new DecimalFormat("#,###.##");
                 String test = "New Cases: " + decim.format(new_cases);
                 new_cases_global.setText(test);

@@ -1,6 +1,7 @@
 package com.example.covid19tracker;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +82,7 @@ public class DataAdapterNews extends RecyclerView.Adapter<DataAdapterNews.ViewHo
             tv_url = view.findViewById(R.id.tv_url_news);
             tv_publishedAt = view.findViewById(R.id.tv_publishedAt);
             iv_url = view.findViewById(R.id.iv_url);
+            tv_title.setPaintFlags(tv_title.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

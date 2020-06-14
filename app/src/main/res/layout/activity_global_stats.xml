@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10sp"
-            android:text="Today"
+            android:text="TODAY:"
             android:textColor="@color/colorText"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20sp"
             android:layout_marginBottom="10sp"
-            android:text="Overall"
+            android:text="TILL DATE:"
             android:textColor="@color/colorText"
             android:textSize="20sp"
             android:textStyle="bold" />

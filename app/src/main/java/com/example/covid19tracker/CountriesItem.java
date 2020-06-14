@@ -7,6 +7,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class CountriesItem implements Parcelable {
 
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
+    public CountriesItem(boolean expanded) {
+        this.expanded = false;
+    }
+
+    private boolean expanded;
+
     @SerializedName("NewRecovered")
     private int newRecovered;
 
@@ -36,6 +50,7 @@ public class CountriesItem implements Parcelable {
 
     @SerializedName("Date")
     private String date;
+
 
     public int getNewRecovered() {
         return newRecovered;

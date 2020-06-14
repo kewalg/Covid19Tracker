@@ -24,7 +24,6 @@ public class CardViewActivity extends AppCompatActivity {
     ViewPager viewPager;
     AdapterForMain adapterForMain;
     List<ModelForMain> models;
-    //Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     TextView tv_aboutme;
 
@@ -48,27 +47,10 @@ public class CardViewActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapterForMain);
         viewPager.setPadding(130, 0, 130, 0);
-        Integer[] colors_temp = {getColor(R.color.color1),
-                getColor(R.color.color2),
-                getColor(R.color.color3)};
-
-        //colors = colors_temp;
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-              /*  if (position < (adapterForMain.getCount() - 1) && position < (colors.length - 1)) {
-                    viewPager.setBackgroundColor((Integer) argbEvaluator.evaluate(positionOffset, colors[position], colors[position + 1]));
-                } else {
-                    viewPager.setBackgroundColor(colors[colors.length - 1]);
-                }*/
-                /*if (position == 0) {
-                    btn_aboutme.setBackgroundResource(R.drawable.round);
-                } else if (position == 1) {
-                    btn_aboutme.setBackgroundResource(R.drawable.round1);
-                } else {
-                    btn_aboutme.setBackgroundResource(R.drawable.round2);
-                }*/
             }
 
             @Override

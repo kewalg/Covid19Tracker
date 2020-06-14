@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,7 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,12 +27,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NewsActivity extends AppCompatActivity {
 
-    TextView new_cases_global, total_cases_global,
-            new_deaths_global, total_deaths_global,
-            new_recoveries_global, total_recoveries_global;
+
     private DataAdapterNews dataAdapterNews;
     private ArrayList<Article> articles = new ArrayList<>();
     private RecyclerView mRecyclerView;
+    private TextView tv_lastupdatedon_news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +42,11 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        new_cases_global = findViewById(R.id.new_cases_global);
-        total_cases_global = findViewById(R.id.total_cases_global);
-        new_deaths_global = findViewById(R.id.new_deaths_global);
-        total_deaths_global = findViewById(R.id.total_deaths_global);
-        new_recoveries_global = findViewById(R.id.new_recovered_global);
-        total_recoveries_global = findViewById(R.id.total_recovered_global);
+        tv_lastupdatedon_news = findViewById(R.id.tv_lastupdatedon_news);
+
+        tv_lastupdatedon_news.setPaintFlags(tv_lastupdatedon_news.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        String date_n = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(new Date());
+        tv_lastupdatedon_news.setText("Last Updated On: " + date_n);
 
         mRecyclerView = findViewById(R.id.recycler_view_news);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -50,7 +54,6 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void parseNewsJSON() {
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://newsapi.org/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -75,7 +78,6 @@ public class NewsActivity extends AppCompatActivity {
                         Intent i = new Intent(NewsActivity.this, NewsSpecificActivity.class);
                         i.putExtra("NewsItem", articles.get(position));
                         startActivity(i);
-
                     }
                 });
             }

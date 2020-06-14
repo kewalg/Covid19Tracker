@@ -1,23 +1,32 @@
 package com.example.covid19tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,11 +40,21 @@ public class MainActivity extends AppCompatActivity {
     private DataAdapter dataAdapter;
     private ArrayList<CountriesItem> countriesItems = new ArrayList<>();
     private RecyclerView mRecyclerView;
+    private TextView tv_lastupdatedon_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        tv_lastupdatedon_country = findViewById(R.id.tv_lastupdatedon_country);
+        tv_lastupdatedon_country.setPaintFlags(tv_lastupdatedon_country.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        String date_n = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(new Date());
+        tv_lastupdatedon_country.setText("Last Updated On: " + date_n);
+
+
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         parseJSON();
@@ -63,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 dataAdapter.setOnItemClickListener(new DataAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        Intent intent = new Intent(MainActivity.this, CountrySpecificActivity.class);
-                        intent.putExtra("ExampleItem", countriesItems.get(position));
-                        startActivity(intent);
                     }
                 });
             }
